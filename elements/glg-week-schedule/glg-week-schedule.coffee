@@ -62,11 +62,13 @@ Polymer(
     return if !meetings.length
 
     @monthMeetings = _.flatten meetings
+    _.each @monthMeetings, (meeting) =>
+      meeting.date = moment(meeting.date).week(moment().week())
+      meeting.end = moment(meeting.end).week(moment().week())
+
     if @monthMeetings.length
       updatedMeetings = []
       _.each @monthMeetings, (meeting) =>
-        meeting.date = moment(meeting.date).week(moment().week())
-        meeting.end = moment(meeting.end).week(moment().week())
         meeting.OtherMeetingsDuringTimeFrame = _.filter(meetings, (otherMeeting) -> 
           moment(meeting.date) <= moment(otherMeeting.end) && moment(meeting.end) >= moment(otherMeeting.date)).length
         updatedMeetings.push(meeting)
