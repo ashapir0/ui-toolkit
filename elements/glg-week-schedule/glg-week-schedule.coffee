@@ -65,6 +65,8 @@ Polymer(
     if @monthMeetings.length
       updatedMeetings = []
       _.each @monthMeetings, (meeting) =>
+        meeting.date = moment(meeting.date).week(moment.week())
+        meeting.end = moment(meeting.end).week(moment.week())
         meeting.OtherMeetingsDuringTimeFrame = _.filter(meetings, (otherMeeting) -> 
           moment(meeting.date) <= moment(otherMeeting.end) && moment(meeting.end) >= moment(otherMeeting.date)).length
         updatedMeetings.push(meeting)
@@ -75,9 +77,6 @@ Polymer(
     @updatedMeetings = _.filter @monthMeetings, (meeting) =>
       moment(meeting.date).week() == @week
 
-  meetingClick: (event) ->
-    @fire('consultationSelected', detail: {'consultations': event.model.meeting});
-      
   minusWeek: () ->
     if !@loading
       @week = @week - 1
@@ -163,10 +162,7 @@ Polymer(
     return [] if !meetingArr.length || meetingArr[0].OtherMeetingsDuringTimeFrame - meetingArr.length <= 0
     return [0..meetingArr[0].OtherMeetingsDuringTimeFrame - meetingArr.length - 1]
    
-
   isMeetingStart: (hourPos, meeting) ->
     moment(meeting.date).hour() == hourPos
-
-
 
 )
