@@ -253,6 +253,37 @@
       </div>
     </div>
 
+ <div class="glg-calendar calendar-wrapper mobile">
+      <div class="month">
+        <div id="nav" class="navigation">
+          
+          <center>
+            <div class="minusDivMobile"><span id="minusMonthMobile" class="icon-dropdownarrow iconFont"></span></div>
+            <h4 class="mobileDates">{{monthString}}</h4>&nbsp;&nbsp;&nbsp;<h4 class="mobileDates">{{year}}</h4>
+            <div class="plusDivMobile"><span id="plusMonthMobile" class="icon-dropdownarrow iconFont"></span></div>
+          </center>
+          
+        </div>
+        <template is="dom-repeat" items="{{meetingDays}}" as="meetingInterval">
+          <template is="dom-if" if="{{isMeetingIntervalUsed(meetingInterval, meetings)}}">
+            <div class="calendar-row">
+              <p class="interval-label">{{getMonthLabel(meetingInterval, month)}}</p>
+              <template is="dom-repeat" items="{{getMeetingsDuringDay(meetingInterval, meetings)}}" as="meeting" index-as="index">
+                <div class$="{{getMeetingClass(meeting)}}" on-click="meetingClick">
+                   <span class$="{{getMeetingTypeIcon(meeting)}}"></span>
+                   <div class="meetinginfohldr">
+                    <span class="meeting-title">{{meeting.title}}</span>
+                    <br>
+                    <span class="meeting-time">{{getMeetingTimeFromDate(meeting.date)}}</span>
+                   </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </template>
+      </div>
+    </div>
+    
   </template>
 </dom-module>
 
