@@ -11,7 +11,7 @@
 
       .glg-calendar {
         font-family: 'font_35';
-        font-size: 2vw;  
+        font-size: 2.5vw;  
         width: 100%;
       }
 
@@ -220,9 +220,9 @@
 
     <div class="glg-calendar desktop">
       <div class="navigation">
-        <div class="minusDiv"><span id="minusMonth" class="icon-dropdownarrow iconFont"></span></div>
+        <!-- <div class="minusDiv"><span id="minusMonth" class="icon-dropdownarrow iconFont"></span></div> -->
         <center><h4>{{monthString}}</h4> <h4>{{year}}</h4></center>
-        <div class="plusDiv"><span id="plusMonth" class="icon-dropdownarrow iconFont"></span></div>
+        <!-- <div class="plusDiv"><span id="plusMonth" class="icon-dropdownarrow iconFont"></span></div> -->
       </div>  
       <div class="container">
         <div class="dayLabels">
@@ -244,9 +244,9 @@
                   <div on-click="meetingClick" data-id$="{{meeting.id}}" class$="{{getMeetingClass(meeting)}}">{{meeting.title}}</div>
                 </div>
               </template>
-              <template is="dom-if" if="{{getMeetingsLength(calPos, meetings, month)}}">
-                  <div class="meeting-overflow">+<span>{{getMeetingsLength(calPos, meetings, month)}}</span></div>
-              </template>
+              <!-- <template is="dom-if" if="{{getMeetingsLength(calPos, meetings, month)}}"> -->
+                  <!-- <div class="meeting-overflow">+<span>{{getMeetingsLength(calPos, meetings, month)}}</span></div> -->
+              <!-- </template> -->
             </template>
           </div>
         </template>
