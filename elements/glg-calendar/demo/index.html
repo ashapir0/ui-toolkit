@@ -5,7 +5,6 @@
     <title>glg-calendar</title>
     <script src="../../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
     <link rel="import" href="../glg-calendar.html">
-    <link rel="import" href="../../glg-schedule/glg-schedule.html">
     <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="../../../bower_components/iron-icons/editor-icons.html">
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
@@ -28,11 +27,7 @@
   </head>
 
   <body>
-    <template is="dom-bind">
-      <div>
-        <glg-calendar selected="{{selectedMeetings}}"></glg-calendar>
-      </div>
-    </template>    
+    <glg-calendar selected="{{selectedMeetings}}"></glg-calendar>
     <script>document.addEventListener('WebComponentsReady', function(){
       document.querySelector('glg-calendar').meetings = [[{'Date':'2015-07-01 09:30:26', 'title':'George needs to go on a walk in the rain', 'id': 123459}, {'Date':'2015-07-01 09:30:26', 'title':'blah', 'id': 19895}, {'Date':'2015-07-01 09:30:26', 'title':'blah', 'id': 87472}, {'Date':'2015-07-01 09:30:26', 'title':'blah', 'id': 29849}, {'Date':'2015-07-01 09:30:26', 'title':'blah', 'id': 18498}, {'Date':'2015-07-01 09:30:26', 'title':'blah', 'id': 58958, 'highlight': true}]];
     })
